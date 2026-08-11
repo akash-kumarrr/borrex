@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Database & SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Type Checking & Linting
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.dmypy.json
+dmypy.json
+
+# IDEs & Code Editors
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Alembic & Database Migrations (Ignore generated DB files, keep scripts)
+# Un-comment if you want to ignore auto-generated Alembic migration versions:
+# alembic/versions/*.py
+# !alembic/versions/__init__.py
+
+# OS / System Specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+.dockerignore
+
+# Temporary / Cache Folders
+.cache/
+tmp/
+temp/
