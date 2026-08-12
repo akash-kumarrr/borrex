@@ -18,6 +18,7 @@ from backend.db.base import Base
 
 # 3. Import all models so Alembic autogenerate detects tables
 import backend.models.users  # noqa: F401
+import backend.models.assets
 
 # Alembic Config object
 config = context.config
