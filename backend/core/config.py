@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 
     database_url : str
     algo : str
+    
     app_secret_key : str 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -21,8 +22,5 @@ class Settings(BaseSettings):
     )
 
 
-@lru_cache
-def get_settings():
-    return Settings()
 
-settings = get_settings()
+settings = Settings()

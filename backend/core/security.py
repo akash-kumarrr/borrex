@@ -2,10 +2,9 @@ from pwdlib import PasswordHash
 from pwdlib.hashers.argon2 import Argon2Hasher
 from datetime import datetime, timedelta, timezone
 import jwt
-from  backend.core.config import settings
 from backend.core.config import settings
 
-from typing import  Any
+from typing import Any
 
 
 password_hash = PasswordHash((Argon2Hasher(),))

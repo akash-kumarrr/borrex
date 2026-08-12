@@ -2,18 +2,11 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.core.config import settings
 from backend.api.deps.auth import get_current_user
 from backend.core.security import hash_password
 from backend.db.sessions import get_db
 from backend.models.users import User
 from backend.schemas.users import UserResponse, UserUpdate
-import jwt
-from fastapi.security import OAuth2PasswordBearer
-
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
-
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -21,20 +14,9 @@ router = APIRouter(prefix="/users", tags=["Users"])
 
 @router.get("/me", response_model=UserResponse)
 async def get_current_user_from_token(
-    token: Annotated[str, Depends(oauth2_scheme)],
-    db: Annotated[AsyncSession, Depends(get_db)],
+    current_user: Annotated[User, Depends(get_current_user)],
 ) -> User:
-    """Decodes access_token to find and return the current user."""
-    # Replace this with your token decoding / verification logic (e.g., PyJWT or python-jose)
-    payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-    user_id = payload.get("sub")
-    
-    # Example DB query after decoding user_id/email:
-    result = await db.execute(select(User).where(User.id == int(user_id)))
-    user = result.scalar_one_or_none()
-    if not user:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
-    return user
+    return current_user
 
 
 @router.patch("/me", response_model=UserResponse)
