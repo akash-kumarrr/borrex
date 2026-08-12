@@ -9,7 +9,7 @@ from backend.core.security import ALGORITHM
 from backend.db.sessions import get_db
 from backend.models.users import User
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
 async def get_current_user(
@@ -42,5 +42,4 @@ async def get_current_user(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Inactive user",
         )
-
     return user

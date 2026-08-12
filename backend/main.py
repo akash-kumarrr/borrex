@@ -2,11 +2,12 @@ from fastapi import FastAPI
 from backend.core.config import settings
 from backend.api.v1.auth import auth_router
 from backend.api.v1.user import router as user_router
+from backend.api.v1.assets import router as asset_router
+
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
 )
-
 
 @app.get("/")
 async def root():
@@ -22,3 +23,4 @@ async def health_check():
 
 app.include_router(auth_router)
 app.include_router(user_router)
+app.include_router(asset_router)
