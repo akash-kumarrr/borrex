@@ -9,6 +9,8 @@ app = FastAPI(
     version=settings.app_version,
 )
 
+
+
 @app.get("/")
 async def root():
     return {
